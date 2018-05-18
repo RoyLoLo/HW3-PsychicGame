@@ -9,10 +9,15 @@
     <script src="main.js"></script>
 </head>
 <body>
+    
+    
     <script type="text/javascript">
+        
+         
          // generating array with alphabet
          var alpharray = []
-            for (i=0; i<26; i++){alpharray.push( String.fromCharCode(97+i) );};
+            for (i=0; i<26; i++)
+            {alpharray.push( String.fromCharCode(97+i) );};
         console.log(alpharray);
 
         //this will randomly generate a letter
@@ -22,18 +27,45 @@
         //this will be where the user guesses
         var userguess = 0;
         var guesscount =0;
-        while (userguess !== compguess && guesscount < 10){
-        userguess = prompt("Please enter a letter to be guessed:");
-        guesscount = guesscount +1;
-        console.log(userguess);
-        console.log(guesscount);};
-
-        alert("you have exceeded the maximum guesses");
-
-        //only saves key strokes
-        //onkeyup = function(event){ var userguess = event.key;};   
+        var guessedlist = [];
         
+        
+        while (userguess !== compguess && guesscount < 10){
+            userguess = prompt("Please enter a letter to be guessed:");
+            guesscount = guesscount +1;
+            guessedlist.push(userguess);
+            console.log(userguess);
+            console.log(guesscount);
+         };
 
+         console.log(guessedlist);
+
+         // determines if user wins or no
+
+         var results = guessedlist.indexOf(compguess);
+
+         console.log(results);
+         
+         //results of game
+         var wincount = 0;
+         var losscount = 0;
+         
+         document.write("Your Guesses:" +guessedlist);
+
+         if (results >= 0){
+             document.write("Congrat!! You got it on try #: "+results);
+             wincount = wincount +1;
+
+            
+         ;}
+
+         else{
+            document.write("Sorry, you lost.  Please reload to try again.");
+            document.write("The Computer guessed: " +compguess);
+            losscount = losscount +1;
+         };
+
+         
         
     </script>
 </body>
